@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <header>
+            <meta charset=utf-8 />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Demo</title>
+            <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase-messaging.js"></script>
+    </header>
+    <body>
+
+    </body>
+
+    <script>
+        const firebaseConfig = {
+                                    apiKey: "AIzaSyA5-hb7tW5NJr8yy5gf4Tcd634onO1wYjw",
+                                    authDomain: "default-demo-app-f759e.firebaseapp.com",
+                                    databaseURL: "https://default-demo-app-f759e.firebaseio.com",
+                                    projectId: "default-demo-app-f759e",
+                                    storageBucket: "default-demo-app-f759e.appspot.com",
+                                    messagingSenderId: "707401752945",
+                                    appId: "1:707401752945:web:c5f288c0dec8e950"
+                                };
+        firebase.initializeApp(firebaseConfig);
+
+        Notification.requestPermission().then(function(permission) {
+        if (permission === 'granted') {
+            console.log('Notification permission granted.');
+            messaging = firebase.messaging();
+
+            messaging.getToken().then(function(currentToken) {
+            if (currentToken) {
+                console.log(currentToken);
+            } else {
+                console.log('No Instance ID token available. Request permission to generate one.');
+            }
+            }).catch(function(err) {
+            console.log('An error occurred while retrieving token. ', err);
+            });
+        } else {
+            console.log('Unable to get permission to notify.');
+        }
+        });
+
+
+      
+    </script>
+</html>
