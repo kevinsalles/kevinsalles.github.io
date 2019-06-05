@@ -18,5 +18,14 @@
 	<br/>
 	<input type="button" value="Envoi du token (fr)" onclick="DI.WebPush.RequestPermission('fr');"  />
 	<input type="button" value="Envoi du token (en)" onclick="DI.WebPush.RequestPermission('en');"  />
+	<br/>
+	<script>
+		if(DI.WebPush.isSupported()){
+			document.write("<br><br>DI.WebPush.isSupported() : Supporté<br>");
+		}
+		else{
+			document.write("<br><br>DI.WebPush.isSupported() : Non supporté<br>");
+		}
+	</script>
 </body>
 </html>
